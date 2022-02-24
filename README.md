@@ -1,2 +1,2 @@
 # news
-news saty
+news city
