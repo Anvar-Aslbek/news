@@ -28,10 +28,11 @@ INSTALLED_APPS = [
     'Admin',
     'fontawesomefree',
     'crispy_forms',
-    "bootstrap5",
+    'bootstrap5',
     'django_quill',
     'taggit',
     'widget_tweaks',
+    'mptt',
 ]
 
 MIDDLEWARE = [

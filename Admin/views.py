@@ -72,7 +72,7 @@ def categories(request):
             redirect('categories')
     else :
         form = CreateCategoryForm()
-    return render(request, 'Category.html',{'news':page_obj,'form':form,'a':a})
+    return render(request, 'Category.html',{'news':category,'form':form,'a':a})
     
 def sort(request):
     results = None

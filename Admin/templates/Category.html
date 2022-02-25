@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
+{% load mptt_tags %}
+
 {% block content %}
         <div class="main-panel">
             {% include 'inc/header.html' %}
@@ -50,12 +52,19 @@
                                             {% for i in news %}
                                             <tr class="  " data-key="620ddae1f2750876ef694475">
                                                 <td><a href="/post/schedule?p=620ddae1f2750876ef694475" data-pjax="0">{{i.id}}</a></td>
-                                                <td><a href="#" data-pjax="0">{{i.name}}</a></td>
+                                                <td><a href="#" data-pjax="0">{{i.parent}}</a></td>
                                                 <td>{{i.description}}</td>
                                                 <th><a href="" data-sort="views">{{i.post_set.count}}</a></th>
                                                 <td>{{i.creted_at|date}}</td>
                                             </tr>
                                             {% endfor %}
+                                            
+                                            {% for genre,structure in news|tree_info %}
+                                                {% if structure.new_level %}<ul><li>{% else %}</li><li>{% endif %}
+                                                    {{ genre.name }}
+                                                {% for level in structure.closed_levels %}</li></ul>{% endfor %}
+                                            {% endfor %}
+                                            
                                         </tbody>
                                     </table>
                                     {% else %}
