@@ -12,27 +12,6 @@ def index(request):
     category = Category.objects.all()
     return render(request,'index.html',{'news':news,'categories':category})
 
-# def search(request):
-#     results = None
-#     category = Category.objects.all()
-#     try:
-#         query = request.POST['query']
-#         results = Post.objects.filter(name__icontains=query) |\
-#             Post.objects.filter(category__name=query)
-
-#         return render(
-#             request,
-#             'index.html',
-#             {'news': results,'categories':category}
-#         )
-#     except KeyError:
-#         "KeyError"
-#         return render(
-#             request,
-#             'index.html',
-#             {'news': results,'categories':category}
-#         )
-
 def search(request):
     results = None
     category = Category.objects.all()
@@ -61,10 +40,10 @@ def search(request):
 
 def categories(request):
     category = Category.objects.all()
-    a = 'salom'
     paginator = Paginator(category, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    #create category
     if request.method == "POST":
         form = CreateCategoryForm(request.POST)
         if form.is_valid():
@@ -72,7 +51,7 @@ def categories(request):
             redirect('categories')
     else :
         form = CreateCategoryForm()
-    return render(request, 'Category.html',{'news':category,'form':form,'a':a})
+    return render(request, 'category.html',{'news':category,'form':form})
     
 def sort(request):
     results = None
@@ -83,14 +62,14 @@ def sort(request):
 
         return render(
             request,
-            'Category.html',
+            'category.html',
             {'news': results,'categories':category}
         )
     except KeyError:
         "KeyError"
         return render(
             request,
-            'Category.html',
+            'category.html',
             {'cateory': results,'categories':category}
         )
 
