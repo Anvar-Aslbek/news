@@ -30,7 +30,7 @@
                                   
                                 {% for genre,structure in news|tree_info %}
                                     {% if structure.new_level %}<ul><li class="list-unstyled">{% else %}</li><li class="list-unstyled" >{% endif %}
-                                        <div class="input-group input-group-lg" style="margin-left:-40px; margin-top: 5px;">
+                                        <div class="input-group input-group" style="margin-left:-40px; margin-top: 5px;">
                                             <span class="input-group-addon"><i class="fa fa-bars" aria-hidden="true"></i></span>	
                                             <input type="text" class="form-control" placeholder="{{ genre.name }}">
                                         </div>
@@ -38,7 +38,6 @@
                                 {% endfor %}
                                 
                             </div>
-                            <div class="panel-footer">Panel Footer</div>
 
                         </div>
                         

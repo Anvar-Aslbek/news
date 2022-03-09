@@ -2,7 +2,7 @@ from django.db import models
 from model_utils.fields import StatusField
 from model_utils import Choices
 from django_quill.fields import QuillField
-from .category import Category
+from .category import Category 
 from taggit.managers import TaggableManager
 from .postAuthor import MyUser
 # Create your models here.
