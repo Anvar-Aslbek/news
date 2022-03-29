@@ -1,29 +1,7 @@
 {% extends 'base.html' %}
-{% load static %
+{% load static %}
 {% load widget_tweaks %}
-
-
 {% block content %}
-
-<!-- <div class="main-panel">
-    {% include 'inc/header.html' %}
-    <div class="main-content">
-        <ul class="breadcrumb ">
-            <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
-            <li class="active">Post</li>
-        </ul>
-
-        <div class="row">
-            <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
-                {% csrf_token %}
-                {{form.as_p}}
-                <button type="">submit</button>
-            </form>
-        </div>                 
-    </div>
-</div> -->
-
-
 <div class="main-panel">
     {% include 'inc/header.html' %}
     <div class="main-content">
@@ -43,11 +21,6 @@
                         <div class="form-group">
                             <label for="slug" style="color:black;">Slug</label>
                             {% render_field form.slug name="slug" type="text" id="disabledTextInput" class="form-control" placeholder="Slug" %}
-                        </div>
-                        <hr>
-                        <div class="form-group">
-                            <label for="img" style="color:black;">Rasm</label>
-                            {% render_field form.img class="form-control" name="img" %}
                         </div>
                         <hr>
                         <div class="form-group">
@@ -71,6 +44,11 @@
                 <div class="panel-body col-lg-4">
                     <fieldset class="col-lg-11">
                         <div class="form-group">
+                            <label for="category" style="color:black;">Category</label>
+                            {% render_field form.category type="text" name="name" id="disabledTextInput" class="form-control" placeholder="Name" %}
+                        </div>
+                        <hr>
+                        <div class="form-group">
                             <label for="status" style="color:black;">Status</label>
                             {% render_field form.status name="status" type="text" id="disabledTextInput" class="form-control" placeholder="Slug" %}
                         </div>
@@ -79,10 +57,10 @@
                             <label for="tags" style="color:black;">Tags</label>
                             {% render_field form.tags class="form-control" name="tags" %}
                         </div>
-                        <hr>
+                        <hr>                      
                         <div class="form-group">
-                            <label for="category" style="color:black;">Category</label>
-                            {% render_field form.category type="text" name="name" id="disabledTextInput" class="form-control" placeholder="Name" %}
+                            <label for="img" style="color:black;">Rasm</label>
+                            {% render_field form.img class="form-control" name="img" %}
                         </div>
                         <hr>
                     </fieldset>
@@ -98,6 +76,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 function changeAttribute(id, att) {
     var data = {};
@@ -106,4 +98,6 @@ function changeAttribute(id, att) {
     $.get('/post/change', data)
 }
 </script>
+
+
 {% endblock content %}
