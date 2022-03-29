@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+<div class="main-panel">
+    {% include 'inc/header.html' %}
+    <div class="main-content">
+        <ul class="breadcrumb ">
+            <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
+            <li class="active">{{post.name}}</li>            
+            <li class="active">delete</li>
+        </ul>
+
+        <div class="row" align="CENTER">
+            <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+                {% csrf_token %}
+                <h3 style="margin:0;padding:0;">{{post.name}}</h3><br>
+                <h5 style="margin:0 0 20px 0;padding:0;color:red;font-weight: bold;"><u>Ushbu postni o'chirishga isonchiz komilmi???</u></h5>
+                <img src="{{post.img.url}}" alt="rasm" style="max-width: 800px;">
+                <br><br>
+                
+                <button type="submit" class="btn btn-danger">O'chirish</button>
+                <a href="{% url 'home' %}" class="btn btn-info" role="button">Ortga qaytish</a>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+function changeAttribute(id, att) {
+    var data = {};
+    data.id = id;
+    data.attribute = att;
+    $.get('/post/change', data)
+}
+</script>
+{% endblock content %}

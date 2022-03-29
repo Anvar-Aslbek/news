@@ -5,6 +5,9 @@ from django_quill.fields import QuillField
 from .category import Category 
 from taggit.managers import TaggableManager
 from .postAuthor import MyUser
+from django.urls import reverse
+
+
 # Create your models here.
 
 
@@ -27,3 +30,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('home')

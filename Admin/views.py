@@ -6,13 +6,16 @@ from taggit.models import Tag
 from .forms import CreateCategoryForm, CreatePostForm
 
 # class kurinishi uchun 
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DeleteView
+from django.views.generic.edit import UpdateView
 
 
 def index(request):
     news = Post.objects.all()
     category = Category.objects.all()
     return render(request,'index.html',{'news':news,'categories':category})
+
+
 class CreatePostView(CreateView):
     form_class = CreatePostForm
     template_name = 'createpost.html'
@@ -21,6 +24,19 @@ class CreatePostView(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class UpdatePostView(UpdateView):
+    model = Post
+    template_name = 'updatepost.html'
+    fields = ['name','slug','img','short_info','description','category','tags','status','is_main']
+    get_absolute_url = 'home'
+
+class DeletePostView(DeleteView):
+    model = Post
+    template_name = 'deletepost.html'
+    success_url = reverse_lazy('home')
+
 
 # def createPost(request):
 #     if request.method == "POST":
