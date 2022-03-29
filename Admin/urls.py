@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index , search ,categories,sort,UserList, tagview
+from .views import index , search ,categories,sort,UserList, tagview, CreatePostView
 
 urlpatterns = [
     path('', index, name ='home'),
@@ -7,5 +7,6 @@ urlpatterns = [
     path('category/',categories,name = 'categories'),
     path('category/sort',sort, name='sort_category'),
     path('user/',UserList,name='user_list'),
-    path('tags/',tagview,name = 'tags_view')
+    path('tags/',tagview,name = 'tags_view'),
+    path('createpost/',CreatePostView.as_view(),name = "createpost")
 ]

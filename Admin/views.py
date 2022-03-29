@@ -1,16 +1,38 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from .models import Post ,Category, MyUser
 from django.core.paginator import Paginator
 from taggit.models import Tag
-from .forms import CreateCategoryForm
+from .forms import CreateCategoryForm, CreatePostForm
 
-
+# class kurinishi uchun 
+from django.views.generic import CreateView
 
 
 def index(request):
     news = Post.objects.all()
     category = Category.objects.all()
     return render(request,'index.html',{'news':news,'categories':category})
+class CreatePostView(CreateView):
+    form_class = CreatePostForm
+    template_name = 'createpost.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+# def createPost(request):
+#     if request.method == "POST":
+#         form = CreatePostForm(request.POST)
+#         if form.is_valid():
+#             form = form.save(commit = False)
+#             form.author = request.user
+#             form.save()
+#             redirect('home')
+#     else :
+#         form = CreatePostForm()
+#     return render(request, 'createpost.html',{'form':form})
 
 def search(request):
     results = None
@@ -34,8 +56,6 @@ def search(request):
             request,
             'index.html',
             {'news': results,'categories':category})
-
-
 
 
 def categories(request):
