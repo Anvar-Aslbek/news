@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>ZarNews.uz веб-сайти. </title>
+    
+<link rel="stylesheet" href="{% static 'zarnews/css/bootstrap.css' %}">
+<link href="https://static.zarnews.uz/assets/75af35c9/css/fontello.css?v=1546946867" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'zarnews/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'zarnews/css/custom.css' %}">
+</head>
+<body class="bg-light style-default style-rounded">
+    <div class="loader-mask">
+        <div class="loader">
+            <div></div> 
+        </div>
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+<div id="error_container" class="error_message">
+    <div class="error_content">
+    </div>
+</div>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/jquery.min.js?v=1545387134"></script>
+<script src="https://static.zarnews.uz/assets/a828f939/yii.js?v=1521657413"></script>
+<script src="https://static.zarnews.uz/assets/9880d8a6/jquery.pjax.js?v=1507803074"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/bootstrap.min.js?v=1545387134"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/easing.min.js?v=1545387134"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/owl-carousel.min.js?v=1545387134"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/flickity.pkgd.min.js?v=1545387134"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/jquery.newsTicker.min.js?v=1545387134"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/jquery.sticky-kit.min.js?v=1545387134"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/modernizr.min.js?v=1545387134"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/theia-sticky-sidebar.min.js?v=1545992923"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/scripts.min.js?v=1564477658"></script>
+<script src="https://static.zarnews.uz/assets/75af35c9/js/custom.js?v=1588964017"></script>
+<script>jQuery(function ($) {
+jQuery(document).pjax("#p-last_news a", {"push":false,"replace":false,"timeout":10000,"scrollTo":false,"container":"#p-last_news"});
+jQuery(document).on("submit", "#p-last_news form[data-pjax]", function (event) {jQuery.pjax.submit(event, {"push":false,"replace":false,"timeout":10000,"scrollTo":false,"container":"#p-last_news"});});
+jQuery(document).pjax("#p0 a", {"push":true,"replace":false,"timeout":10000,"scrollTo":false,"container":"#p0"});
+jQuery(document).on("submit", "#p0 form[data-pjax]", function (event) {jQuery.pjax.submit(event, {"push":true,"replace":false,"timeout":10000,"scrollTo":false,"container":"#p0"});});
+});</script><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131034062-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-131034062-1');
+</script>
+</body>
+</html>
