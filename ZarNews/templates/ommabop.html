@@ -1,0 +1,23 @@
+<ul class="post-list-small">
+    {% for i in best_view %}
+    <li class="post-list-small__item">
+        <article class="post-list-small__entry clearfix">
+            <div class="post-list-small__body">
+                <h3 class="post-list-small__entry-title">
+                    <a href="https://zarnews.uz/post/pedagoglar-attestaciyasida-inson-omili-aralashmaydi">
+                        {{i.short_info}}
+                    </a>
+                </h3>
+                <ul class="entry__meta">
+                    <li class="entry__meta-date">
+                        {{ i.created_at|date:"d/m" }} {{i.created_at|time:"H:i"}}
+                    </li>
+                    <li class="entry__meta-author">
+                        <span class="ui-eye"></span> {{i.views}}
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </li>
+    {% endfor %}
+</ul>
